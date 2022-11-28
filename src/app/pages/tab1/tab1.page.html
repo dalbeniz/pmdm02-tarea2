@@ -1,0 +1,42 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-title>
+      Mis noticias
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-segment [scrollable]="true" (ionChange)="cambiado($event)" value="all">
+		<ion-segment-button value="all">
+			<ion-label>
+				General
+			</ion-label>
+		</ion-segment-button>
+		<ion-segment-button value="business">
+			<ion-label>
+				Business
+			</ion-label>
+		</ion-segment-button>
+    <ion-segment-button value="technology">
+			<ion-label>
+				Technology
+			</ion-label>
+		</ion-segment-button>
+    <ion-segment-button value="science">
+			<ion-label>
+				Science
+			</ion-label>
+		</ion-segment-button>
+	</ion-segment>
+
+<ion-content>
+  <ion-list *ngFor="let item of listaNoticias">
+    <ion-item>
+      <ion-checkbox color="primary" slot="start" [checked]="seleccionado(item)" (ionChange)="check($event, item)"></ion-checkbox>
+      <ion-label color="primary" class="ion-text-wrap">
+        <h3>{{ item.source.name}} </h3>
+        <p> {{ item.title}} </p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>
